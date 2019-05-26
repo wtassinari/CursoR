@@ -1,0 +1,87 @@
+```{r, echo=F, warning=FALSE, results='asis', message = FALSE}
+
+setwd("/home/tassinari/Documentos/cursos_ecologicos_2019")
+
+```
+
+
+
+# O que são Séries Temporais ?
+
+
+- **Definição**: É o estudo de um fenômeno que ocorre ao longo do tempo. E os dados desse fenômeno são precisam ser coletados em intervalos regulares de tempo.
+
+- **Intervalo**: Hora, minuto, segundo, dia, mês, trimestre, ano, etc.
+
+- **Condição**: Esses dados seguem uma ordenação em função do tempo (dependencia temporal).
+
+---
+
+**Ex**: Total de pessoas atendidas em um hospital por dia. 
+
+- **Medida**: "Total..."
+
+- **Fato**: "...de pessoas atendidas em um hospital..."
+
+- **Unidade de tempo**: "...por dia."
+
+---
+
+# Componentes das Séries Temporais 
+
+- Tendência
+
+- Sazonalidade
+
+- Ciclo
+
+- Aleatório
+
+![Fonte: Minerva's Data Lab, Cambridge, Reino Unido](~/Documentos/cursos_ecologicos_2019/figuras/componentes.png){width=470px}
+
+## Estacionariedade
+
+- A média e a variância se mantêm constante durante o tempo
+
+
+![](/home/tassinari/Documentos/cursos_ecologicos_2019/figuras/estacionaria1.png){width=900px}
+
+---
+
+- **Exemplo:**: Incidência de dengue nas Filipinas, 2008 - 2016
+
+```{r, echo=T, warning=FALSE, results='asis', message = FALSE}
+
+d=read.csv("/home/tassinari/Documentos/cursos_ecologicos_2019/dados/denguecases.csv")
+
+DT::datatable(d, filter="top", options = list(pageLength = 5, scrollX=T))
+
+```
+
+
+
+```{r, echo=T, warning=FALSE, results='asis', message = FALSE, out.width = "60%"}
+
+# Agregando os dados regionais para representar todo o país
+denguecasesph=aggregate(Dengue_Cases~Month+Year,d,sum)
+
+#Convertendo os dados para o formato de Séries Temporais
+denguecasesphts=ts(denguecasesph$Dengue_Cases,c(2008,1),c(2016,12),12)
+
+#12 foi especificado pois queremos mostrar dos dados mensais
+plot(denguecasesphts)
+library(Kendall)
+lines(lowess(time(denguecasesphts),denguecasesphts),lwd=3, col=2)
+
+```
+
+
+```{r, echo=T, warning=FALSE, results='asis', message = FALSE}
+
+library(ggfortify)
+# Decomposição da Série Temporal
+autoplot(decompose(denguecasesphts))
+
+```
+
+
