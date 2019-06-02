@@ -1,8 +1,7 @@
 
 ```{r, echo=F, warning=FALSE, results='asis', message = FALSE}
 
-# setwd("/home/tassinari/Documentos/cursos_ecologicos_2019")
-setwd("/home/tassinari/Documentos/cursos_ecologicos_2019")
+setwd("/home/tassinari/Documentos/CursoR")
 
 
 ```

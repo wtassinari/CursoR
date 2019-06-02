@@ -1,0 +1,27 @@
+--- 
+title: "Introdução ao R e ao Rstudio"
+author: "José Berilo & Wagner Tassinari"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+# bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+theme: cerulean
+
+---
+
+
+
+
+
+```{r child="Aula1.Rmd", echo=FALSE}
+
+
+```
+
+
+```{r child="Aula2.Rmd", echo=FALSE}
+# https://rstudio-pubs-static.s3.amazonaws.com/54094_4809c606467f455d95af5928703944ab.html#1
+
+```
