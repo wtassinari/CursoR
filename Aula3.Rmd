@@ -1,0 +1,79 @@
+---
+title: "Untitled"
+author: "berilo"
+date: "08/07/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Pedindo ajuda
+
+## Exibindo os principais links do R
+
+help.start()
+
+help(nome_funcao)
+
+?nome_funcao
+
+?"{"
+
+demo()
+
+
+
+# Ajuda na web
+
+## Stackoverflow
+
+## r-br
+
+
+
+# Pacotes
+
+## Pacotes Disponíveis
+
+```{r, echo=FALSE }
+x <- as.data.frame(available.packages())
+x <- subset(x, select = c("Package","Version","License"))
+nrow(x); head(x); tail(x)
+```
+
+## Instalação de Pacotes
+
+install.packages("tidyr")
+install.packages(c("plyr", "tidyr", "dplyr"))
+
+
+## Remoção de Pacotes
+
+remove.packages("tidyr")
+remove.packages(c("plyr", "tidyr", "dplyr"))
+
+
+
+## Versão, ambiente, citação e diretórios importantes
+
+# Mostra tudo que está carregado no ambiente
+```{r}
+ls()
+```
+
+# Obtem o caminho local da sessão
+```{r}
+getwd() 
+```
+# Lista pastas e arquivos do caminho
+```{r}
+dir() 
+```
+# Define novo local para a sessão atual
+```{r}
+setwd()
+```
+
+
